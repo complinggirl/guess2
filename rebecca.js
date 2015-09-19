@@ -1,10 +1,78 @@
 
 $(document).ready(function() {
 
-var upper = 100;
-var lower = 1;
-var temp;
-var mystery = 6;
+  var tries= 0;
+var myGuess;
+var mystery;
+
+function evaluate(myRand){
+  // alert("press a number");
+  // alert(mystery);
+
+
+  $(".guess").click(function() {
+    // alert(this.value); // or alert($(this).attr('id'));
+    myGuess=this.value;
+    // alert("guess "+myGuess);
+    $(this).css("background", "red");
+    $(this).attr('disabled', true);
+
+
+
+    tries++;
+
+
+    //alert(" rand "+ myRand);
+   if (myRand === myGuess){
+      $('h3#me').append('<p>You Win</p>');
+
+
+    }
+
+  if (myRand != myGuess) {
+
+          if (tries === 7) {
+            $('h3#me').append('<p>You Loser!</p>');
+
+         }
+      }
+
+
+   if (myRand != myGuess) {
+
+          if(myRand>myGuess){
+           $('h3#me').append('<p>Too low</p>');
+          }
+
+          if(myRand<myGuess) {
+             $('h3#me').append('<p>Too high</p>');
+            }
+          evaluate(myRand);
+        }
+
+
+
+
+
+
+  });
+  };
+
+
+
+
+function play(){
+  var mystery= Math.floor((Math.random() * 100) + 1);
+  evaluate(mystery);
+
+
+};
+
+
+
+  //if mystery > input "guess too low"
+  //else "guess too low" tries++
+  //else "out of tries"
 
 
 // function loopy{
@@ -22,9 +90,9 @@ var mystery = 6;
         };
 
         $('#one').delegate('input[type=button]','click',function(){
-       alert(this.value);
-       $(this).css("background", "red");
-       $(this).attr('disabled', true);
+      //  alert(this.value);
+      //  $(this).css("background", "red");
+      //  $(this).attr('disabled', true);
       });
 
 //setting up second tow
@@ -35,9 +103,9 @@ var mystery = 6;
           };
 
           $('#two').delegate('input[type=button]','click',function(){
-         alert(this.value);
-         $(this).css("background", "red");
-         $(this).attr('disabled', true);
+        //  alert(this.value);
+        //  $(this).css("background", "red");
+        //  $(this).attr('disabled', true);
         });
 
 //setting up third row
@@ -48,9 +116,9 @@ var mystery = 6;
             };
 
             $('#three').delegate('input[type=button]','click',function(){
-           alert(this.value);
-           $(this).css("background", "red");
-           $(this).attr('disabled', true);
+          //  alert(this.value);
+          //  $(this).css("background", "red");
+          //  $(this).attr('disabled', true);
           });
 
 
@@ -62,11 +130,19 @@ var mystery = 6;
               };
 
               $('#four').delegate('input[type=button]','click',function(){
-             alert(this.value);
-             $(this).css("background", "red");
-             $(this).attr('disabled', true);
+            //  alert(this.value);
+            //  $(this).css("background", "red");
+            //  $(this).attr('disabled', true);
             });
 
+
+
+//start game
+
+        $("#start").click(function() {
+          // alert("hi");
+          play();
+        });
 
 });
 

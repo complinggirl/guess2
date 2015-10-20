@@ -1,0 +1,3 @@
+# guess2
+
+This was a joint task with Bob Dennet task using jquery to dynamically creat 100 buttons for a guessing game. Mostly motivated by a strong desire to not hand code all those buttons... It is not working currently, I think I fiddled with a couple of things before presenting to the class and broke it. I need to get back to it because it is a really attractive little game...
